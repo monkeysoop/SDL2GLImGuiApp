@@ -34,13 +34,11 @@ project_lib = static_library(
     sources: project_headers,
 )
 
-project_dep = declare_dependency(
-    link_with: project_lib,
-    include_directories: project_inc,
-    sources: project_headers,
-)
-
 set_variable(
     '' + meson.project_name() + '_dep',
-    project_dep
+    declare_dependency(
+        link_with: project_lib,
+        include_directories: project_inc,
+        sources: project_headers,
+    ),
 )
