@@ -1,4 +1,4 @@
 #!/bin/bash
-cd builddir
-meson compile -C meson-src
-valgrind ./meson-src/app
+cd builddir || exit $?
+meson compile -C meson-src || exit $?
+./meson-src/app || exit $?
